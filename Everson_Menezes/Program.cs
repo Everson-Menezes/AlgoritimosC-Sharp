@@ -1,5 +1,4 @@
 ﻿using System;
-using Xceed.Wpf.Toolkit;
 
 namespace Everson_Menezes
 {
@@ -33,7 +32,8 @@ namespace Everson_Menezes
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Por favor insira apenas números", ex.Message);
+                //Console.WriteLine("Por favor insira apenas números", ex.Message);
+                throw;
             }
         }
     }

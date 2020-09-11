@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Everson_Menezes
@@ -50,13 +51,26 @@ namespace Everson_Menezes
             //[2, 4, 3] ->  3 valores que repetem //
             string[] numerosQueRepetem = listaRepetidos.ToArray();
 
-            //[2, 4, 4, 3, 2, 3, 4] -> 8 valores repetidos//
+            //[2, 4, 4, 3, 2, 3, 4] -> 7 valores repetidos//
             string[] repetidos = Vetor.Where(x => listaAux.Contains(x)).ToArray();
-            int[] vetorAux = new int[numerosQueRepetem.Length];
+            int[,] vetorAux = new int[numerosQueRepetem.Length, repetidos.Length];
+
             for (int x = 0; x < numerosQueRepetem.Length; x++)
             {
-
+                int contador = 0;
+                for(int y = 0; y < repetidos.Length; y++)
+                {
+                    if(numerosQueRepetem[x] == repetidos[y])
+                    {
+                        contador++;
+                        int valor = int.Parse(numerosQueRepetem[x]);
+                        vetorAux[x,y] = vetorAux[valor, contador];                        
+                    }
+                    Console.WriteLine(x);
+                    Console.WriteLine(y);
+                }
             }
+            Console.WriteLine(vetorAux);
         }
     }
 }
