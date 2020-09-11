@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Everson_Menezes
@@ -16,10 +17,45 @@ namespace Everson_Menezes
             string obj = Entrada.ToString();
             int comprimento = obj.Length;
             Vetor = new string[comprimento];
+            string conteudo;
+            List<string> listaUnicos = new List<string>();
+            List<string> listaRepetidos = new List<string>();
+            List<string> listaAux = new List<string>();
+
+
             for (int i = 0; i < comprimento; i++)
             {
                 Vetor[i] = obj.Substring(i, 1);
-                Console.WriteLine(Vetor[i]);
+            }
+
+            for (int j = 0; j < comprimento; j++)
+            {
+                conteudo = Vetor[j];
+
+                if (Vetor.Where(x => x.Equals(conteudo)).Count().Equals(1))
+                {
+                    listaUnicos.Add(conteudo);
+                }
+                else if (!listaRepetidos.Contains(conteudo))
+                {
+                    listaRepetidos.Add(conteudo);
+                }
+                else
+                {
+                    listaAux.Add(conteudo);
+                }
+            }
+            //245431234
+
+            //[2, 4, 3] ->  3 valores que repetem //
+            string[] numerosQueRepetem = listaRepetidos.ToArray();
+
+            //[2, 4, 4, 3, 2, 3, 4] -> 8 valores repetidos//
+            string[] repetidos = Vetor.Where(x => listaAux.Contains(x)).ToArray();
+            int[] vetorAux = new int[numerosQueRepetem.Length];
+            for (int x = 0; x < numerosQueRepetem.Length; x++)
+            {
+
             }
         }
     }
